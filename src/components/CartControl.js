@@ -10,32 +10,42 @@ class CartControl extends React.Component {
     this.state = {
       itemCount: 0,
       totalPrice: 0,
-      cartOpen: false
+      cartOpen: false,
+      mainCartList: []
     };
   }
 
-  toggleCarrtVisibility = () ==> {
-    this.setState(prevState => ({
-      
-    
-      
-    }));
+  toggleCartVisibility = () => {
+    this.setState(oldState => ({
+      cartOpen: !oldState.cartOpen
+    }))
   }
 
-  render() {
-    let cartShown = ntateull;
-    if (this.state.cartOpen === true) {
-      currentVisible  } else {
+  handleAddingNewOrderToList = (newOrder) => {
+    const newMainCartList = this.state.mainCartList.concat(newOrder);
+    this.setState({mainCartList: newMainCartList,
+                  cartOpen: false });
+  }
 
+
+
+  render() {
+    let cartShown = null;
+    if (this.state.cartOpen === true) {
+      cartShown = <NewOrderForm onNewOrderCreation={this.handleAddingNewOrderToList}/>
+    } else {
+      cartShown = <CartList cartList = {this.state.mainCartList}/>
     }
     
     return ( 
       <React.Fragment>
         <Widget 
           itemCount = {this.state.itemCount}
+          onClickEvent = {this.toggleCartVisibility}
         />
-        <CartList />
-        <NewOrderForm />
+        <br /><br /><br /><br /><br />
+        <hr />
+        {cartShown}
       </React.Fragment>
     );
   }

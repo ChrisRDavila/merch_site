@@ -36,3 +36,19 @@
     transform: rotate(360deg);
   }
 }
+
+/* .navBarItem {
+  text-align: center;
+} */
+
+#navBarGreeting {
+  float: left;
+  margin-left: 10%;
+  font-size: .8em;
+}
+
+#navBarCart {
+  margin-top: 1%;
+  margin-right: 10%;
+  float: right;
+}

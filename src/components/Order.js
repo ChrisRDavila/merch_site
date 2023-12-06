@@ -4,8 +4,9 @@ import PropTypes from "prop-types";
 function Order(props){
   return (
     <React.Fragment>
-      <p>{props.quantity} of {props.item}</p>
-      <p><em>{props.description}</em></p>
+      <p>Your Order: {props.quantity} of {props.item}</p>
+      <p><em>Description: {props.description}</em></p>
+      <p>cost: {props.orderPrice}</p>
     </React.Fragment>
   );
 }
@@ -13,7 +14,8 @@ function Order(props){
 Order.propTypes = {
   quantity: PropTypes.number,
   item: PropTypes.string,
-  description: PropTypes.string
+  description: PropTypes.string,
+  orderPrice: PropTypes.number
 };
 
 export default Order;

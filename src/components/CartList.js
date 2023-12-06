@@ -1,39 +1,24 @@
 import React from "react";
 import Order from "./Order.js";
+import PropTypes from "prop-types";
 
-const mainOrderList = [
-  {
-    quantity: 2,
-    item: 'ablum',
-    desciption: 'album',
-    totalPrice: 10.00
-  },
-  {
-    quantity: 1,
-    item: 'shirt',
-    description: 'band shirt',
-    totalPrice: 7.00
-  },
-  {
-    quantity: 3,
-    item: 'button',
-    description: 'band button',
-    totalPrice: 3.00
-  }
-];
 
-function CartList(){
+function CartList(props){
   return (
     <React.Fragment>
-      <hr/>
-      {mainOrderList.map((order, index) =>
+      {props.cartList.map((order, index) =>
         <Order quantity={order.quantity}
           item={order.item}
           description={order.description}
+          orderPrice={order.orderPrice}
           key={index}/>
       )}
     </React.Fragment>
   );
 }
+
+CartList.propTypes = {
+  cartList: PropTypes.array
+};
 
 export default CartList;

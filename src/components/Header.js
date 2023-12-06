@@ -1,15 +1,12 @@
 import React from "react";
 import Widget from "./Widget";
-
+import "../App.css";
 
 function Header(){
-  const styledNavBar = {
-    
-  }
   return ( 
     <React.Fragment>
-      <div style={styledNavBar}>
-        <h1>Welcome to Epichorus Merch Site!!</h1>
+      <div className="navBarItem" id="navBarGreeting">
+        <h1>Welcome to <br />Epichorus Merch Site!!</h1>
       </div>
     </React.Fragment>
   );
