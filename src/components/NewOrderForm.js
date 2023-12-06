@@ -34,7 +34,7 @@ function NewOrderForm(props){
       item: selectedItem,
       description: itemData[selectedItem].description,  
       orderPrice: itemData[selectedItem].pricePerUnit * quantity,
-      inventory: itemData[selectedItem].inventory,
+      // inventory: itemData[selectedItem].inventory - quantity,
       id: v4()
     });
 
