@@ -2,7 +2,7 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-![Compnent Diagram of Merch site](Merch-site.drawio.png)
+![Compnent Diagram of Merch site](Merch-site-2.drawio.png)
 
 ## Available Scripts
 

@@ -11,6 +11,7 @@ function CartList(props){
           item={order.item}
           description={order.description}
           orderPrice={order.orderPrice}
+          inventory={order.inventory}
           key={index}/>
       )}
     </React.Fragment>

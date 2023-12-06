@@ -1,70 +1,88 @@
-import React from "react";
+import React, {useState} from "react";
 import PropTypes from "prop-types";
-import { v4 } from 'uuid';
+import { v4 } from "uuid";
 
-function NewOrderForm(props){
+// let itemData = [
+//   {
+//     productType: "album",
+//     description:
+//       "A vinyl record of the band's latest album.  Comes with a digital download.",
+//     pricePerUnit: 20,
+//     inventory: 50,
+//   },
+//   {
+//     productType: "shirt",
+//     description: "A t-shirt with the band's logo on it.",
+//     pricePerUnit: 15,
+//     inventory: 45,
+//   },
+//   {
+//     productType: "button",
+//     description: "A button with the band's logo on it.",
+//     pricePerUnit: 1,
+//     inventory: 33,
+//   },
+// ];
 
-  const itemData = {
-    album: {
-      description: "A vinyl record of the band's latest album.  Comes with a digital download.",
-      pricePerUnit: 20,
-      inventory: 50
-    },
-    shirt: {
-      description: "A t-shirt with the band's logo on it.",
-      pricePerUnit: 15,
-      inventory: 45
-    },
-    button: {
-      description: "A button with the band's logo on it.",
-      pricePerUnit: 1,
-      inventory: 33
-    }
-  }
+// function testFunction(findThisIndex) {
+//   for (let i = 0; i > itemData.length; i++) {
+//     if (itemData[i].inventory === findThisIndex) {
+//       return i;
+//     }
+//   }
+// }
+
+function NewOrderForm(props) {
+  // const [errorMessage, setErrorMessage] = useState("");
 
   function handleNewOrderFormSubmission(event) {
     event.preventDefault();
-    const selectedItem = event.target.items.value;
+    const selectedItemType = event.target.items.value;
     const quantity = parseInt(event.target.quantity.value);
-    const inventory = parseInt(event.target.inventory.value);
+    // let errorMessage = "Can't place order. Order exceeds our stock levels";
 
+    // let inventory = parseInt(event.target.inventory.value);
 
-    props.onNewOrderCreation({
-      quantity: quantity,
-      item: selectedItem,
-      description: itemData[selectedItem].description,  
-      orderPrice: itemData[selectedItem].pricePerUnit * quantity,
-      // inventory: itemData[selectedItem].inventory - quantity,
-      id: v4()
-    });
+    const selectedItemData = props.itemData.find(
+      (item) => item.productType === selectedItemType
+    );
 
-    
-    
+    if (selectedItemData && quantity <= selectedItemData.inventory) {
+      props.onNewOrderCreation({
+        quantity: quantity,
+        item: selectedItemType,
+        description: selectedItemData.description,
+        orderPrice: selectedItemData.pricePerUnit * quantity,
+        inventory: selectedItemData.inventory,
+        id: v4(),
+      });
+
+      props.updateInventory(selectedItemType, selectedItemData.inventory - quantity);
+      props.setErrorMessage("");
+    } else {
+      props.setErrorMessage("Can't place order, out of stock");
+      
+    }
   }
 
   return (
     <React.Fragment>
       <form onSubmit={handleNewOrderFormSubmission}>
-        <label for='items'>Items</label>
-        <select name='items' id="items">
-          <option value='album'>Album</option>
-          <option value='shirt'>Shirt</option>
-          <option value='button'>Button</option>
+        <label htmlFor="items">Items</label>
+        <select name="items" id="items">
+          <option value="album">Album</option>
+          <option value="shirt">Shirt</option>
+          <option value="button">Button</option>
         </select>
-        <input
-          type='number'
-          name='quantity'
-          placeholder='quantity' 
-          ></input>
-        <button type='submit'>Submit</button>
+        <input type="number" name="quantity" placeholder="quantity"></input>
+        <button type="submit">Submit</button>
       </form>
+      {props.errorMessage && <p></p>}
     </React.Fragment>
   );
 }
 NewOrderForm.propTypes = {
-  onNewOrderCreation: PropTypes.func
+  onNewOrderCreation: PropTypes.func,
 };
-
-
 
 export default NewOrderForm;
