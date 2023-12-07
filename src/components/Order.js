@@ -9,8 +9,6 @@ function Order(props){
         <p>Quantity: {props.quantity}</p>
         <p>Item: {props.item}</p>
         <p><em>Description: {props.description}</em></p>
-        {/* <p>Cost: ${props.orderPrice}</p> */}
-        {/* <p>inventory: {props.inventory}</p> */}
       </div>
     </React.Fragment>
   );

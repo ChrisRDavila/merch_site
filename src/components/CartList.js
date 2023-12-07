@@ -12,7 +12,6 @@ function CartList(props){
           quantity={order.quantity}
           item={order.item}
           description={order.description}
-          // orderPrice={order.orderPrice}
           inventory={order.inventory}
           id={order.id}
           key={order.id}/>

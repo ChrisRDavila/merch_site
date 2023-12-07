@@ -1,16 +1,28 @@
 import React from "react";
 import PropTypes from "prop-types";
+import album from "../img/album.jpg";
+import shirt from "../img/Tshirt.png";
+import button from "../img/button.jpg";
 
 function OrderDetail(props){
+  let input;
   const { order, onClickingDelete } = props;
+  if (order.item === "album") {
+    input = album;
+  } else if (order.item === "shirt") {
+    input = shirt;
+  } else if (order.item === "button") {
+    input = button;
+  }
 
+  const altAttribute = `image of ${input}`;
   return (
     <React.Fragment>
       <h1>Order Detail</h1>
       <p>Quantity: {order.quantity}</p>
       <p>Item: {order.item}</p>
+      <img src={input} alt= {altAttribute} />
       <p>Description: {order.description}</p>
-      {/* <p>Cost: ${order.orderPrice}</p> */}
       <button onClick={props.onClickingEdit}>Update Order</button>
       <button onClick={()=> onClickingDelete(order.id) }>Close Order</button>
       <hr/>

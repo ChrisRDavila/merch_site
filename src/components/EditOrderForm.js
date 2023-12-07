@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import NewOrderForm from "./NewOrderForm";
+// import NewOrderForm from "./NewOrderForm";
 import ReusableOrderForm from "./ReusableOrderForm";
 
 function EditOrderForm(props) {
@@ -9,23 +9,14 @@ function EditOrderForm(props) {
 
   function handleEditOrderFormSubmit(event) {
     event.preventDefault();
-    console.log("Items value:", event.target.elements.items.value);
     console.log("Quantity value:", event.target.elements.quantity.value);
     console.log("All Item Data:", itemData);
-    const selectedItemData = props.itemData.find(
-      (item) => item.productType === event.target.elements.items.value
-    );
-    // console.log("Price per unit: ", selectedItemData.pricePerUnit);
     console.log(order.quantity)
 
 
     const updateOrder = {
       ...order,
-      item: event.target.elements.items.value || order.item,
       quantity: parseInt(event.target.elements.quantity.value) || order.quantity,
-      description: order.description,
-      // totalPrice: parseInt(event.target.elements.pricePerUnit.value) * parseInt(order.quantity) || parseInt(order.pricePerUnit) * parseInt(order.quantity),
-   
       inventory: order.inventory,
       id: order.id
     }
