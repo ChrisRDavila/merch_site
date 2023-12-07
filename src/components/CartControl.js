@@ -2,6 +2,8 @@ import React from "react";
 import Widget from "./Widget.js";
 import CartList from "./CartList.js";
 import NewOrderForm from "./NewOrderForm.js";
+import OrderDetail from "./OrderDetail.js";
+// import OrderDetail from "./OrderDetail.js";
 
 class CartControl extends React.Component {
   constructor(props) {
@@ -11,6 +13,7 @@ class CartControl extends React.Component {
       totalPrice: 0,
       cartOpen: false,
       mainCartList: [],
+      // selectedOrder: null,
       errorMessage: "",
       itemData: [
         {
@@ -62,9 +65,19 @@ class CartControl extends React.Component {
     this.setState({ mainCartList: newMainCartList, cartOpen: false });
   };
 
+  // handleChangingSelectedItem = (id) => {
+  //   const selectedOrder = this.state.mainCartList.filter(
+  //     (order) => order.id === id
+  //   )[0];
+  //   this.setState({ selectedOrder: selectedOrder });
+  // }
+
   render() {
     let cartShown = null;
-    if (this.state.cartOpen === true) {
+    // if (this.state.selectedOrder != null) {
+    //   cartShown = <OrderDetail order = {this.state.selectedOrder} />
+    // } else
+      if (this.state.cartOpen === true) {
       cartShown = (
         <NewOrderForm 
         onNewOrderCreation={this.handleAddingNewOrderToList}
@@ -74,7 +87,9 @@ class CartControl extends React.Component {
         setErrorMessage={this.setErrorMessage} />
       );
     } else {
-      cartShown = <CartList cartList={this.state.mainCartList} />;
+      cartShown = <CartList cartList={this.state.mainCartList} 
+      // onOrderSelection={this.handleChangingSelectedItem}
+      />;
     }
 
     return (

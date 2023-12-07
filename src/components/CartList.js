@@ -6,20 +6,24 @@ import PropTypes from "prop-types";
 function CartList(props){
   return (
     <React.Fragment>
-      {props.cartList.map((order, index) =>
-        <Order quantity={order.quantity}
+      {props.cartList.map((order) =>
+        <Order
+          whenOrderClicked = { props.onOrderSelection }
+          quantity={order.quantity}
           item={order.item}
           description={order.description}
           orderPrice={order.orderPrice}
           inventory={order.inventory}
-          key={index}/>
+          id={order.id}
+          key={order.id}/>
       )}
     </React.Fragment>
   );
 }
 
 CartList.propTypes = {
-  cartList: PropTypes.array
+  cartList: PropTypes.array,
+  // onOrderSelection: PropTypes.func
 };
 
 export default CartList;
