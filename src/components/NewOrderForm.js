@@ -77,7 +77,7 @@ function NewOrderForm(props) {
         <input type="number" name="quantity" placeholder="quantity"></input>
         <button type="submit">Submit</button>
       </form>
-      {props.errorMessage && <p></p>}
+      {props.errorMessage}
     </React.Fragment>
   );
 }

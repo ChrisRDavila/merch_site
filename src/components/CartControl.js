@@ -70,7 +70,7 @@ class CartControl extends React.Component {
         onNewOrderCreation={this.handleAddingNewOrderToList}
         updateInventory={this.updateInventory}
         itemData={this.state.itemData}
-        errorMessage={this.state.errormessage}
+        errorMessage={this.state.errorMessage}
         setErrorMessage={this.setErrorMessage} />
       );
     } else {
