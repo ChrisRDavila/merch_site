@@ -7,10 +7,10 @@ function OrderDetail(props){
   return (
     <React.Fragment>
       <h1>Order Detail</h1>
-      <p>quantity: {order.quantity}</p>
-      <p>item: {order.item}</p>
-      <p>description: {order.description}</p>
-      <p>cost: {order.orderPrice}</p>
+      <p>Quantity: {order.quantity}</p>
+      <p>Item: {order.item}</p>
+      <p>Description: {order.description}</p>
+      {/* <p>Cost: ${order.orderPrice}</p> */}
       <button onClick={props.onClickingEdit}>Update Order</button>
       <button onClick={()=> onClickingDelete(order.id) }>Close Order</button>
       <hr/>

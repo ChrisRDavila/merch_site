@@ -4,12 +4,14 @@ import CartList from "./CartList.js";
 import NewOrderForm from "./NewOrderForm.js";
 import OrderDetail from "./OrderDetail.js";
 import EditOrderForm from "./EditOrderForm.js";
+import PriceCalculator from "./PriceCalculator.js";
 
 class CartControl extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      totalPrice: 0,
+      // totalPrice: 0,
+      // pricePerUnit: 0,
       cartOpen: false,
       mainCartList: [],
       selectedOrder: null,
@@ -44,16 +46,7 @@ class CartControl extends React.Component {
     this.setState({ editing: true });
   };
 
-  handleEditingOrderInLIst = (orderToEdit) => {
-    const editedMainCartList = this.state.mainCartList
-    .filter(order => order.id !== this.state.selectedOrder.id)
-    .concat(orderToEdit);
-    this.setState({
-      mainCartList: editedMainCartList,
-      editing: false,
-      selectedOrder: null
-    })
-  }
+
 
   setErrorMessage = (message) => {
     this.setState({ errorMessage: message });
@@ -76,19 +69,18 @@ class CartControl extends React.Component {
   //   }));
   // }; before OrderDetailSelection added
 
-toggleCartVisibility = () => {
-  if (this.state.selectedOrder != null) {
-    this.setState({
-      cartOpen: false,
-      selectedOrder: null,
-    });
-  } else {
-    this.setState((oldState) => ({  
-      cartOpen: !oldState.cartOpen,
-    }));
-  }
-}
-
+  toggleCartVisibility = () => {
+    if (this.state.selectedOrder != null) {
+      this.setState({
+        cartOpen: false,
+        selectedOrder: null,
+      });
+    } else {
+      this.setState((oldState) => ({
+        cartOpen: !oldState.cartOpen,
+      }));
+    }
+  };
 
   handleAddingNewOrderToList = (newOrder) => {
     const newMainCartList = this.state.mainCartList.concat(newOrder);
@@ -101,6 +93,30 @@ toggleCartVisibility = () => {
     )[0];
     this.setState({ selectedOrder: selectedOrder });
   };
+
+  // handleEditingOrderInList = (orderToEdit) => {
+  //   const editedMainCartList = this.state.mainCartList
+  //     .filter((order) => order.id !== this.state.selectedOrder.id)
+  //     .concat(orderToEdit);
+  //     console.log("Message here?")
+  //   this.setState({
+  //     mainCartList: editedMainCartList,
+  //     editing: false,
+  //     selectedOrder: null,
+  //   }, () => console.log(this.state.mainCartList));
+  // };
+
+  handleEditingOrderInList = (orderToEdit) => {
+    const editedMainCartList = this.state.mainCartList.map((order) =>
+    order.id === orderToEdit.id ? { ...order, ...orderToEdit } : order
+    );
+    this.setState({
+      mainCartList: editedMainCartList,
+      editing: false,
+      selectedOrder: null,
+    })
+  }
+
 
   handleDeletingOrder = (id) => {
     const newMainCartList = this.state.mainCartList.filter(
@@ -117,16 +133,19 @@ toggleCartVisibility = () => {
 
     if (this.state.editing === true) {
       console.log("Rendering Edit");
-      currentView = (<EditOrderForm 
-        order={this.state.selectedOrder}
-        onEditOrder={this.handleEditingOrderInLIst} 
-        onFormSubmit={this.handleAddingNewOrderToList} />);
-      
+      currentView = (
+        <EditOrderForm
+          order={this.state.selectedOrder}
+          onEditOrder={this.handleEditingOrderInList}
+          itemData={this.state.itemData}
+        />
+        // onFormSubmit={this.handleAddingNewOrderToList} />);
+      );
     } else if (this.state.selectedOrder != null) {
       currentView = (
         <OrderDetail
           order={this.state.selectedOrder}
-          onClickingDelete = {this.handleDeletingOrder}
+          onClickingDelete={this.handleDeletingOrder}
           onClickingEdit={this.handleEditClick}
           onClickingBackToCart={this.toggleCartVisibility}
         />

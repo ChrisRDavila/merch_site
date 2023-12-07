@@ -23,7 +23,7 @@ function NewOrderForm(props) {
         quantity: quantity,
         item: selectedItemType,
         description: selectedItemData.description,
-        orderPrice: selectedItemData.pricePerUnit * quantity,
+        // orderPrice: selectedItemData.pricePerUnit * quantity,
         inventory: selectedItemData.inventory,
         id: v4(),
       });
