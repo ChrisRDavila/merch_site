@@ -162,10 +162,16 @@ class CartControl extends React.Component {
       );
     } else {
       currentView = (
+        <React.Fragment>
         <CartList
           cartList={this.state.mainCartList}
           onOrderSelection={this.handleChangingSelectedOrder}
         />
+        <PriceCalculator 
+          cartList={this.state.mainCartList}
+          itemData={this.itemData}
+        />
+        </React.Fragment>
       );
     }
     return (
