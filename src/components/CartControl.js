@@ -169,7 +169,7 @@ class CartControl extends React.Component {
         />
         <PriceCalculator 
           cartList={this.state.mainCartList}
-          itemData={this.itemData}
+          itemData={this.state.itemData}
         />
         </React.Fragment>
       );
