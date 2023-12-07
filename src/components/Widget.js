@@ -13,6 +13,7 @@ function Widget(props) {
     numOfItemsElement = <span>{props.itemCount}</span>;
   }
   return (
+    
     <React.Fragment>
       <div id="navBarCart">
         <p style={cursorChange} onClick={props.onClickEvent}>Cart ({numOfItemsElement})    

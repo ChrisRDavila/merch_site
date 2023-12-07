@@ -1,36 +1,7 @@
 import React, {useState} from "react";
 import PropTypes from "prop-types";
 import { v4 } from "uuid";
-
-// let itemData = [
-//   {
-//     productType: "album",
-//     description:
-//       "A vinyl record of the band's latest album.  Comes with a digital download.",
-//     pricePerUnit: 20,
-//     inventory: 50,
-//   },
-//   {
-//     productType: "shirt",
-//     description: "A t-shirt with the band's logo on it.",
-//     pricePerUnit: 15,
-//     inventory: 45,
-//   },
-//   {
-//     productType: "button",
-//     description: "A button with the band's logo on it.",
-//     pricePerUnit: 1,
-//     inventory: 33,
-//   },
-// ];
-
-// function testFunction(findThisIndex) {
-//   for (let i = 0; i > itemData.length; i++) {
-//     if (itemData[i].inventory === findThisIndex) {
-//       return i;
-//     }
-//   }
-// }
+// import ReusableForm from "./ReusableOrderForm";
 
 function NewOrderForm(props) {
   // const [errorMessage, setErrorMessage] = useState("");

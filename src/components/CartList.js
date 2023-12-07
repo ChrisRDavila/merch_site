@@ -23,7 +23,7 @@ function CartList(props){
 
 CartList.propTypes = {
   cartList: PropTypes.array,
-  // onOrderSelection: PropTypes.func
+  onOrderSelection: PropTypes.func
 };
 
 export default CartList;
