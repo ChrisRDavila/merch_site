@@ -10,10 +10,13 @@ import PropTypes from "prop-types";
     calculatedPrice = selectedItemData.pricePerUnit * product.quantity;
   });
   
+  const centerAlign = {
+    textAlign: "center"
+  }
 
   return (
     <React.Fragment>
-      <p>Total Price: ${calculatedPrice}</p>
+      <p style={centerAlign}>Total Price: ${calculatedPrice}</p>
     </React.Fragment>
   )
 }

@@ -3,11 +3,23 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from "./components/App"
 import reportWebVitals from './reportWebVitals';
+import background from '../src/img/bGround.jpg';
 
+const defaultStyle = {
+  backgroundImage: `url(${background})`,
+  color: "#FFFC00",
+  fontFamily: ['Deborah Fancy Dress', "sans-serif"],
+  fontSize: "150%"
+
+}
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
+  
   <React.StrictMode>
+    <link href="https://fonts.cdnfonts.com/css/deborah-fancy-dress" rel="stylesheet"></link>
+      <div className="background" style={defaultStyle}>
     <App />
+      </div>
   </React.StrictMode>
 );
 

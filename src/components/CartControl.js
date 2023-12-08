@@ -113,7 +113,8 @@ class CartControl extends React.Component {
 
     // Stylesheets
     const cartStyles = {
-      backgroundColor: "#00FFE0",
+      // backgroundColor: "#61dafb",
+      textAlign: "center"
     }
 
     // Branching for Current View
@@ -128,12 +129,14 @@ class CartControl extends React.Component {
       );
     } else if (this.state.selectedOrder != null) {
       currentView = (
-        <OrderDetail
-          order={this.state.selectedOrder}
-          onClickingDelete={this.handleDeletingOrder}
-          onClickingEdit={this.handleEditClick}
-          onClickingBackToCart={this.toggleCartVisibility}
-        />
+        <React.Fragment>
+          <OrderDetail
+            order={this.state.selectedOrder}
+            onClickingDelete={this.handleDeletingOrder}
+            onClickingEdit={this.handleEditClick}
+            onClickingBackToCart={this.toggleCartVisibility}
+          />
+        </React.Fragment>
       );
     } else if (this.state.cartOpen === false) {
       currentView = (
@@ -148,7 +151,9 @@ class CartControl extends React.Component {
     } else {
       currentView = (
         <React.Fragment>
+        
         <div style={cartStyles}>
+          <h3>Your Cart</h3>
           <CartList
             cartList={this.state.mainCartList}
             onOrderSelection={this.handleChangingSelectedOrder}

@@ -5,13 +5,11 @@ import '../App.css';
 
 
 function App(){
+  
   return ( 
     <React.Fragment>
-        {/* <h1>Epichorus Merch Site</h1> */}
       <NavBar />
       <CartControl />
-      
-      
     </React.Fragment>
   );
 }
