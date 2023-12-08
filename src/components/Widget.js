@@ -4,7 +4,10 @@ import "../App.css";
 
 function Widget(props) {
   const cursorChange = {
-    cursor: "pointer"
+    cursor: "pointer",
+    marginTop: "1%",
+    marginRight: "10%",
+    float: "right"
   }
   let numOfItemsElement;
   if ((props.itemCount === 0) || (!props.itemCount))  {

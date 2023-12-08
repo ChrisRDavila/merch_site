@@ -177,6 +177,7 @@ class CartControl extends React.Component {
         <br />
         <br />
         <br />
+        <br />
         <hr />
         {currentView}
       </React.Fragment>

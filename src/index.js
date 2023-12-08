@@ -4,11 +4,17 @@ import './index.css';
 import App from "./components/App"
 import reportWebVitals from './reportWebVitals';
 
+const defaultStyle = {
+  minHeight: "100%",
+    marginBottom: "0%",
+    minHeight: "100vh"
+}
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  
+
   <React.StrictMode>
-    <App />
+    <App style={defaultStyle} />
   </React.StrictMode>
 );
 

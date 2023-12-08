@@ -13,6 +13,11 @@ function OrderDetail(props){
     borderStyle: "solid",
     padding: "10px"
   };
+
+  const alignmentCenter = {
+    // backgroundColor: "#61dafb",
+    textAlign: "center"
+  }
   
   let input;
   const { order, onClickingDelete } = props;
@@ -26,17 +31,21 @@ function OrderDetail(props){
   const altAttribute = `image of ${input}`;
   return (
     <React.Fragment>
-      <h3>Order Detail</h3>
-      <div style={itemStyling}>
-        <p>Quantity: {order.quantity}</p>
-        <p>Item: {order.item}</p>
-        <img src={input} alt= {altAttribute} />
-        <p>Description: {order.description}</p>
-        <button onClick={props.onClickingEdit}>Update Order</button>
-        <button onClick={()=> onClickingDelete(order.id) }>Close Order</button>
+      <div style={alignmentCenter}>
+        <h3>Order Detail</h3>
+        <div style={itemStyling}>
+          <h4>Item: {order.item}</h4>
+          <p>Quantity: {order.quantity}</p>
+          <img src={input} alt= {altAttribute} />
+          <p>Description: {order.description}</p>
+          <div style={alignmentCenter}>
+            <button onClick={props.onClickingEdit}>Update Order</button>
+            <button onClick={()=> onClickingDelete(order.id) }>Close Order</button>
+          </div>
+        </div>
+        <hr/>
+        <button onClick={props.onClickingBackToCart}>Return to Cart</button>
       </div>
-      <hr/>
-      <button onClick={props.onClickingBackToCart}>Return to Cart</button>
     </React.Fragment>
   );
 }

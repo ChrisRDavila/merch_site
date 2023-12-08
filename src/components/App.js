@@ -8,11 +8,15 @@ import background from '../img/bGround.jpg';
 function App(){
   const defaultStyle = {
     backgroundImage: `url(${background})`,
+    opactiy: "90%",
     color: "#FFFC00",
     fontFamily: ['Deborah Fancy Dress', "sans-serif"],
-    fontSize: "150%"
-  
+    fontSize: "150%",
+    minHeight: "100%",
+    marginBottom: "0%"
   }
+
+  
   
   return ( 
     <React.Fragment>

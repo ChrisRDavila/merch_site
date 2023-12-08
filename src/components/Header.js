@@ -13,28 +13,35 @@ function Header() {
     fontFamily: '"Roboto", sans-serif',
     textShadow: "1px 1px 2px grey",
     boxShadow: "0 2px 5px rgba(0, 0, 0, 0.2",
-    transition: "all 0.3s ease-in-out",
+    transition: "all 0.4s ease-in-out",
+  };
+
+  const bannerStyle = {
+    float: "left",
+    marginTop: "1%",
+    marginLeft: "10%",
+    fontSize: ".8em",
   };
 
   const hoverStyle = {
     ...defaultStyle,
     backgroundColor: "#71eaff",
-    color: "#111111",
+    color: "#FFFFFF",
   };
 
   return (
     <React.Fragment>
-      <div
-        className="navBarItem"
-        id="navBarGreeting"
-        style={isHovered ? hoverStyle : defaultStyle}
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
-      >
-        <h1>
-          Welcome to <br />
-          Epichorus Merch Site!!
-        </h1>
+      <div style={bannerStyle}>
+        <div
+          style={isHovered ? hoverStyle : defaultStyle}
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+        >
+          <h1>
+            Welcome to <br />
+            Epichorus Merch Site!!
+          </h1>
+        </div>
       </div>
     </React.Fragment>
   );
